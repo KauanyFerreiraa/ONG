@@ -1,0 +1,196 @@
+/* ================================
+   🌍 Sistema de Design
+================================ */
+
+/* 🎨 Paleta de cores */
+:root {
+  --cor-primaria: #0066cc;
+  --cor-secundaria: #00a8e8;
+  --cor-neutra-escura: #1a1a1a;
+  --cor-neutra-media: #666666;
+  --cor-neutra-clara: #f5f5f5;
+  --cor-sucesso: #4CAF50;
+  --cor-alerta: #FFC107;
+  --cor-erro: #F44336;
+
+  /* ✍️ Tipografia */
+  --fonte-principal: 'Poppins', sans-serif;
+  --fonte-titulo: 'Montserrat', sans-serif;
+
+  /* 🔠 Tamanhos de fonte */
+  --fs-xxs: 12px;
+  --fs-xs: 14px;
+  --fs-sm: 16px;
+  --fs-md: 20px;
+  --fs-lg: 28px;
+  --fs-xl: 36px;
+
+  /* 📏 Espaçamentos (modular scale 8px) */
+  --esp-1: 8px;
+  --esp-2: 16px;
+  --esp-3: 24px;
+  --esp-4: 32px;
+  --esp-5: 48px;
+  --esp-6: 64px;
+}
+
+/* ================================
+   🌐 Estilos Globais
+================================ */
+body {
+  font-family: var(--fonte-principal);
+  font-size: var(--fs-sm);
+  margin: 0;
+  padding: 0;
+  color: var(--cor-neutra-escura);
+  background-color: var(--cor-neutra-clara);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-primaria);
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* ================================
+   🧭 Navegação (menu)
+================================ */
+header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-2);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--esp-3);
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Menu mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+}
+
+/* ================================
+   🧱 Layout Principal
+================================ */
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--esp-3);
+  padding: var(--esp-4);
+}
+
+/* Cartões de projetos */
+.card {
+  grid-column: span 4;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: var(--esp-3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ================================
+   🧾 Formulários
+================================ */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  max-width: 500px;
+}
+
+input, select, textarea {
+  padding: var(--esp-2);
+  border: 1px solid var(--cor-neutra-media);
+  border-radius: 4px;
+  font-size: var(--fs-sm);
+}
+
+input:focus {
+  outline: 2px solid var(--cor-secundaria);
+}
+
+button {
+  background: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-2);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--cor-secundaria);
+}
+
+/* ================================
+   💬 Feedback (alertas/modais)
+================================ */
+.alerta {
+  background-color: var(--cor-alerta);
+  padding: var(--esp-2);
+  border-radius: 4px;
+  color: var(--cor-neutra-escura);
+  margin-top: var(--esp-2);
+}
+
+/* ================================
+   📱 Responsividade
+================================ */
+@media (max-width: 1024px) {
+  .card { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .menu-toggle { display: flex; }
+  .card { grid-column: span 12; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: var(--fs-xs); }
+  h1 { font-size: var(--fs-md); }
+}
