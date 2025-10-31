@@ -1,0 +1,275 @@
+/* ================================
+   🌍 Sistema de Design
+================================ */
+:root {
+  /* 🎨 Paleta de cores */
+  --cor-primaria: #0066cc;
+  --cor-secundaria: #00a8e8;
+  --cor-neutra-escura: #1a1a1a;
+  --cor-neutra-media: #666666;
+  --cor-neutra-clara: #f5f5f5;
+  --cor-sucesso: #4CAF50;
+  --cor-alerta: #FFC107;
+  --cor-erro: #F44336;
+
+  /* ✍️ Tipografia */
+  --fonte-principal: 'Poppins', sans-serif;
+  --fonte-titulo: 'Montserrat', sans-serif;
+
+  /* 🔠 Tamanhos de fonte */
+  --fs-xxs: 12px;
+  --fs-xs: 14px;
+  --fs-sm: 16px;
+  --fs-md: 20px;
+  --fs-lg: 28px;
+  --fs-xl: 36px;
+
+  /* 📏 Espaçamentos (modular scale 8px) */
+  --esp-1: 8px;
+  --esp-2: 16px;
+  --esp-3: 24px;
+  --esp-4: 32px;
+  --esp-5: 48px;
+  --esp-6: 64px;
+}
+
+/* ================================
+   🌐 Estilos Globais
+================================ */
+body {
+  font-family: var(--fonte-principal);
+  font-size: var(--fs-sm);
+  margin: 0;
+  padding: 0;
+  color: var(--cor-neutra-escura);
+  background-color: var(--cor-neutra-clara);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-primaria);
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--cor-secundaria);
+}
+
+/* ================================
+   🧭 Navegação (menu)
+================================ */
+header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-2);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: var(--fs-md);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--esp-3);
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Submenu dropdown */
+.dropdown {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: white;
+  list-style: none;
+  padding: var(--esp-2);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+}
+
+.submenu li {
+  margin-bottom: var(--esp-1);
+}
+
+.submenu li a {
+  color: var(--cor-neutra-escura);
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+/* Menu mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+}
+
+/* ================================
+   🧱 Layout Principal
+================================ */
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--esp-3);
+  padding: var(--esp-4);
+}
+
+/* Cartões de projetos */
+.card {
+  grid-column: span 4;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: var(--esp-3);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  gap: var(--esp-1);
+  margin-top: var(--esp-2);
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: var(--fs-xxs);
+  font-weight: 500;
+  color: white;
+}
+
+.tag-verde { background: var(--cor-sucesso); }
+.tag-azul { background: var(--cor-secundaria); }
+.tag-vermelha { background: var(--cor-erro); }
+
+/* ================================
+   💬 Formulários e Modal
+================================ */
+.formulario {
+  padding: var(--esp-5);
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input, textarea {
+  padding: var(--esp-2);
+  border: 1px solid var(--cor-neutra-media);
+  border-radius: 4px;
+}
+
+button {
+  background: var(--cor-primaria);
+  color: white;
+  padding: var(--esp-2);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--cor-secundaria);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: var(--esp-4);
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.fechar {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-size: var(--fs-md);
+  cursor: pointer;
+}
+
+/* ================================
+   📱 Responsividade
+================================ */
+@media (max-width: 1024px) {
+  .card { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .menu-toggle { display: flex; }
+  .menu.ativo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--cor-primaria);
+    padding: var(--esp-2);
+  }
+  .card { grid-column: span 12; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: var(--fs-xs); }
+  h1 { font-size: var(--fs-md); }
+}
